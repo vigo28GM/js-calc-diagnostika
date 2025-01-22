@@ -4,8 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
+    <style>
+      .success {
+        color: green;
+      }
+      .error {
+        color: red;
+      }
+    </style>
   </head>
   <body>
+    <input type="number" id="num1" />
+    <input type="text" id="operator" />
+    <input type="number" id="num2" />
+    <button id="button">apreiķināt</button>
+    <button id="clearButton">Notīrīt</button>
+    <p id="output"></p>
+
+    <script>
+      const button = document.getElementById("button");
+      const num1Input = document.getElementById("num1");
+      const num2Input = document.getElementById("num2");
+      const operatorInput = document.getElementById("operator");
+      const output = document.getElementById("output");
+
+      button.addEventListener("click", handleClick);
     
+      function handleClick() {
+        const num1Value = parseFloat(num1Input.value);
+        const num2Value = parseFloat(num2Input.value);
+        const operatorValue = operatorInput.value;
+        let result = calc(num1Value, num2Value, operatorValue);
+        let error = ValideUserInput(num1Value, num2Value, operatorValue);
+
+      }
+
+      function calc(n1, n2, op) {
+        let result;
+        switch (op) {
+          case "+":
+            result = n1 + n2;
+            break;
+          case "-":
+            result = n1 - n2;
+            break;
+          case "/":
+            result = n1 / n2;
+            break;
+          case "*":
+            result = n1 * n2;
+            break;
+          case "^":
+            result = n1 ** n2;
+            break;
+
+          default:
+            "nav ievadīts operators";
+            break;
+        }
+        return result;
+      }
+
+
+    </script>
   </body>
 </html>
